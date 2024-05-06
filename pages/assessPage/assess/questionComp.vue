@@ -4,16 +4,18 @@
 			<view class="question_number">{{`${number}/${total}`}}</view>
 		</view>
 		<scroll-view class="question_body">
-			<view class="question_type">单选</view>
-			<view class="question_title">{{info?.title}}</view>
-			<view class="question_option">
-				<view 
-					:class="['question_option_item', option.value === selectOption.value ? '.question_option_item_active' : '']"
-					v-for="(option, index) in info?.options" 
-					:key="`question_option_item_${index}`"
-					@click="onSelect(option)"
-				>
-					<view class="question_option_item_text">{{option?.content}}</view>
+			<view style="flex:1;background-color: #EEEEEE;padding: 10rpx 30rpx 80rpx 15rpx;">
+				<view class="question_type">单选</view>
+				<view class="question_title">{{info?.title}}</view>
+				<view class="question_option">
+					<view 
+						:class="['question_option_item', option.value === selectOption.value ? 'question_option_item_active' : '']"
+						v-for="(option, index) in info?.options"
+						:key="`question_option_item_${index}`"
+						@tap="onSelect(option)"
+					>
+						<view class="question_option_item_text">{{option?.content}}</view>
+					</view>
 				</view>
 			</view>
 		</scroll-view>
@@ -84,8 +86,9 @@
 		flex: 1;
 		flex-direction: column;
 		min-height: 0;
-		background-color: #EEEEEE;
-		padding: 10rpx 15rpx;
+		margin-top: 20rpx;
+		// background-color: #EEEEEE;
+		// padding: 10rpx 15rpx;
 		.question_type {
 			color: #333333;
 			font-size: 22rpx;
@@ -117,7 +120,7 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-end;
-		margin-bottom: 80rpx;
+		margin-bottom: 20rpx;
 		padding: 20rpx 0;
 	}
 	.question_bottom_btn {

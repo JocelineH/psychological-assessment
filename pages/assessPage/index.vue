@@ -18,7 +18,7 @@
 		<view class="assesspage_right">
 			<view class="assesspage_top">
 				<view class="assesspage_top_search">
-					<uni-icons type="search" size="20" :color="COLOR" @click="gotoSearch" />
+					<uni-icons type="search" size="20" @click="gotoSearch" />
 				</view>
 			</view>
 			<view class="sort">
@@ -39,6 +39,7 @@
 		components: { assessList },
 		data() {
 			return {
+				COLOR: '#3D7EFF',
 				classifyList: [],
 				classify: null,
 				assesses: [],
@@ -135,7 +136,7 @@
 			background-color: transparent;
 		}
 		.classify_list_item_line_active {
-			background-color: green;
+			background-color: $global-color;
 		}
 		.classify_list_item_text {
 			color: #333333;
@@ -144,7 +145,7 @@
 		}
 		.classify_list_item_text_active {
 			font-size: 32rpx;
-			color: green; 
+			color: $global-color; 
 		}
 	}
 	.assesspage_top {

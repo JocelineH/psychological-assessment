@@ -352,7 +352,7 @@
 		padding: 10rpx 10rpx;
 		color: $global-color;
 		font-size: 32rpx;
-/* 		border: 1rpx solid COLOR; */
+/* 		border: 1rpx solid $global-color; */
 	}
 	.code_btn_dis {
 		color: #999999;

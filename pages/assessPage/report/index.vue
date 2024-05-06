@@ -39,6 +39,43 @@
 				// this.$forceUpdate()
 			},
 			gotoPay() {
+				// 获取微信支付参数信息
+				const res = {
+					appId: '123', // 微信开发者平台的appId，用于支付签名验证
+					nonceStr: 'ruy3iifhndjkszf', // 随机字符串，用于支付签名验证
+					timeStamp: new Date().valueOf(), // 时间戳，用于支付签名验证
+					package: 'package', // 固定值，统一下单接口返回的 prepay_id 参数值，用于发起微信支付
+					signType: 'MD5', // 固定值，签名类型，目前支持 MD5 和 HMAC-SHA256，默认为 MD5
+					paySign: 'fyueiowafje' // 签名
+				}
+				uni.requestPayment({
+					provider: 'wxpay',
+					timeStamp: res?.timeStamp,
+					nonceStr: res?.nonceStr,
+					package: res?.package,
+					signType: res?.signType,
+					paySign: res?.paySign,
+					success: function(res){
+						uni.showToast({
+							title: '支付成功',
+							icon: 'none'
+						})
+						setTimeout(()=>{
+							uni.navigateBack()
+						}, 2000)
+					},
+					fail: function(err){
+						uni.showToast({
+							title: '支付失败',
+							icon: 'none'
+						})
+						setTimeout(()=>{
+							uni.navigateBack({
+								delta: 2
+							})
+						}, 2000)
+					},
+				})
 			}
 			//
 		}

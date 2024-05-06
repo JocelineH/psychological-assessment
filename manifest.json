@@ -70,6 +70,19 @@
             "sdkConfigs" : {
                 "speech" : {
                     "ifly" : {}
+                },
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "__UNI__EF83AF9",
+                        "UniversalLinks" : ""
+                    }
+                },
+                "payment" : {
+                    "weixin" : {
+                        "__platform__" : [ "ios", "android" ],
+                        "appid" : "__UNI__EF83AF9",
+                        "UniversalLinks" : ""
+                    }
                 }
             },
             "orientation" : [ "portrait-primary" ]
