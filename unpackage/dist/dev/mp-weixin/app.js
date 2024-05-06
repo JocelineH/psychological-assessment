@@ -3,6 +3,8 @@ Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
 const store_index = require("./store/index.js");
 if (!Math) {
+  "./pages/login/index.js";
+  "./pages/login/component/logo.js";
   "./pages/firstPage/index.js";
   "./pages/assessPage/index.js";
   "./pages/assessPage/search.js";
@@ -11,9 +13,6 @@ if (!Math) {
   "./pages/personal/index.js";
   "./pages/personal/personalEdit.js";
   "./pages/personal/personalData.js";
-  "./pages/login/index.js";
-  "./pages/login/component/logo.js";
-  "./pages/tabBar/component/component.js";
   "./pages/API/login/login.js";
   "./pages/API/get-user-info/get-user-info.js";
   "./pages/API/request-payment/request-payment.js";
@@ -141,7 +140,7 @@ const _sfc_main = {
     ...common_vendor.mapMutations(["setUniverifyErrorMsg", "setUniverifyLogin"])
   }
 };
-const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/hejing/Documents/project/newProject/App.vue"]]);
+const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/hejing/Documents/project/psychological-assessment/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   app.use(store_index.store);

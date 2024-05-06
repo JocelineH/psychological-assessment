@@ -915,64 +915,37 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.firstpage_container[data-v-f18b3c3f] {
-  width: 100%;
-  background: #FFFFFF;
-}
-.firstpage_container .top_swiper[data-v-f18b3c3f] {
-  height: 9.375rem;
-}
-.firstpage_container .top_swiper .top_swiper_item_img[data-v-f18b3c3f] {
-  width: 100%;
+.assesssearch_container {
   height: 100%;
-}
-.firstpage_container .title[data-v-f18b3c3f] {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-}
-.firstpage_container .title .title_text[data-v-f18b3c3f] {
-  margin-top: 0.3125rem;
-  color: #333333;
-  font-size: 1.125rem;
-  font-weight: 400;
-}
-.firstpage_container .title .title_tag[data-v-f18b3c3f] {
-  color: #D9001B;
-  font-size: 0.6875rem;
-  font-weight: 400;
-}
-.firstpage_container .title_sub_text[data-v-f18b3c3f] {
-  color: #555555;
-  font-size: 0.6875rem;
-  font-weight: 400;
-}
-.firstpage_container .hot_comment[data-v-f18b3c3f] {
-  margin-top: 0.625rem;
+  background: #FFFFFF;
   padding: 0 0.625rem;
 }
-.firstpage_container .hot_comment .hot_comment_list[data-v-f18b3c3f] {
+.assesssearch_container .search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2.65625rem;
+  margin-bottom: 0.625rem;
+}
+.assesssearch_container .search .search_input {
   display: flex;
   flex: 1;
   flex-direction: row;
-  overflow-x: scroll;
+  align-items: center;
+  margin-right: 0.3125rem;
+  padding-right: 0.3125rem;
+  border-radius: 5px;
+  border: 1px solid #797979;
 }
-.firstpage_container .hot_comment .hot_comment_list .hot_comment_list_item[data-v-f18b3c3f] {
+.assesssearch_container .search .uni-input {
+  background: transparent;
+}
+.assesssearch_container .assesses_list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-.firstpage_container .hot_comment .hot_comment_list .hot_comment_list_item .hot_comment_list_item_img[data-v-f18b3c3f] {
-  width: 5rem;
-  height: 3.75rem;
-}
-.firstpage_container .hot_comment .hot_comment_list .hot_comment_list_item .hot_comment_list_item_name[data-v-f18b3c3f] {
-  margin-top: 0.3125rem;
-  color: #333333;
-  font-size: 0.8125rem;
-  font-weight: 400;
-}
-.firstpage_container .cherry_pick[data-v-f18b3c3f] {
-  margin-top: 0.625rem;
-  padding: 0 0.625rem;
+  flex: 1;
+  min-height: 0;
+  overflow: visible;
+  position: relative;
+  padding-left: 0.625rem;
 }

@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/login/index",
+    "pages/login/component/logo",
     "pages/firstPage/index",
     "pages/assessPage/index",
     "pages/assessPage/search",
@@ -7,10 +9,7 @@
     "pages/assessPage/report/index",
     "pages/personal/index",
     "pages/personal/personalEdit",
-    "pages/personal/personalData",
-    "pages/login/index",
-    "pages/login/component/logo",
-    "pages/tabBar/component/component"
+    "pages/personal/personalData"
   ],
   "subPackages": [
     {

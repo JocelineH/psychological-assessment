@@ -599,7 +599,7 @@
   padding: 0.3125rem 0.3125rem;
   color: #3D7EFF;
   font-size: 1rem;
-  /* 		border: 1rpx solid COLOR; */
+  /* 		border: 1rpx solid $global-color; */
 }
 .login_container .code_btn_dis {
   color: #999999;
