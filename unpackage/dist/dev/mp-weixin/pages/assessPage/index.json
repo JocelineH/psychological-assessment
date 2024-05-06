@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "assess-list": "../../components/assess-list/assess-list",
+    "uni-list-item": "../../uni_modules/uni-list/components/uni-list-item/uni-list-item",
+    "uni-list": "../../uni_modules/uni-list/components/uni-list/uni-list",
+    "uni-icons": "../../uni_modules/uni-icons/components/uni-icons/uni-icons"
+  }
+}
