@@ -1,6 +1,7 @@
 <template>
 	<view class="login_container">
-		<logoVue></logoVue>
+		<view style="height: 60rpx"/>
+		<logoVue />
 		<view class="form_row">
 			<text class="label">手机号：</text>
 			<view class="uni-input-wrapper form_row_content">
@@ -223,11 +224,12 @@
 
 <style lang="scss">
 .login_container {
-	// height: 100%;
+	height: 100%;
 	text-align: center;
 	background: #FFFFFF; 
-	padding: 40rpx;
-	padding-top: 60rpx;
+	display: flex;
+    flex-direction: column;
+	padding: 0 40rpx;
 	.form_row {
 		/* width: 100%; */
 		margin-top: 20rpx;

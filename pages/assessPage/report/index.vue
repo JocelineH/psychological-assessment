@@ -39,7 +39,7 @@
 				// this.$forceUpdate()
 			},
 			gotoPay() {
-				// 获取微信支付参数信息
+				// 通过接口 获取微信支付参数信息
 				const res = {
 					appId: '123', // 微信开发者平台的appId，用于支付签名验证
 					nonceStr: 'ruy3iifhndjkszf', // 随机字符串，用于支付签名验证

@@ -24,10 +24,12 @@
 /* 透明度 */
 /* 文章场景相关 */
 .login_container {
+  height: 100%;
   text-align: center;
   background: #FFFFFF;
-  padding: 40rpx;
-  padding-top: 60rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 0 40rpx;
 }
 .login_container .form_row {
   /* width: 100%; */
