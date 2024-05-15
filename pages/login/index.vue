@@ -42,31 +42,22 @@
 		<view class="login_btn" @click="onLogin">
 			<text class="login_btn_text">登录</text>
 		</view>
-		<view class="login_btn auth_login_btn" @click="onAuthLogin">
-			<text class="login_btn_text auth_login_btn_text">微信授权登录</text>
-		</view>
-		<view class="login_btn auth_login_btn">
-			<button class="login_btn_text auth_login_btn_text" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信授权登录</button>
-		</view>
 		<!-- <block v-if="hasApply === false">
 			<text>请完成微信授权以继续使用</text>
 		</block> -->
+		<AuthLogin :checked="checked"/>
 	</view>
 </template>
 
 <script>
-	import {
-		mapState,
-		mapMutations,
-		mapActions
-	} from 'vuex'
 	import logoVue from './component/logo.vue';
+	import AuthLogin from './authLogin.vue'
 	const mobile_reg = /^1[3-9]{1}[0-9]{9}$/;
 	export default {
-		components: { logoVue },
+		components: { logoVue, AuthLogin },
 		data() {
 			return {
-				COLOR: '#3D7EFF',
+				COLOR: '#1AB84E',
 				mobile: '',
 				code: '',
 				validCode: '',
@@ -77,66 +68,17 @@
 			}
 		},
 		onLoad() {
+			console.log('=====onLoad')
 			if (this.setTime) {
 				clearInterval(this.setTime);
 			}
-		// 	uni.getProvider({
-		// 		service: 'oauth',
-		// 		success: (result) => {
-		// 			this.providerList = result.provider.map((value) => {
-		// 				let providerName = '';
-		// 				switch (value) {
-		// 					case 'weixin':
-		// 						providerName = '微信登录'
-		// 						break;
-		// 					case 'qq':
-		// 						providerName = 'QQ登录'
-		// 						break;
-		// 					case 'sinaweibo':
-		// 						providerName = '新浪微博登录'
-		// 						break;
-		// 					case 'xiaomi':
-		// 						providerName = '小米登录'
-		// 						break;
-		// 					case 'alipay':
-		// 						providerName = '支付宝登录'
-		// 						break;
-		// 					case 'baidu':
-		// 						providerName = '百度登录'
-		// 						break;
-		// 					case 'jd':
-		// 					  providerName = '京东登录'
-		// 					  break;
-		// 					case 'toutiao':
-		// 						providerName = '头条登录'
-		// 						break;
-		// 					case 'apple':
-		// 						providerName = '苹果登录'
-		// 						break;
-		// 					case 'univerify':
-		// 						providerName = '一键登录'
-		// 						break;
-		// 				}
-		// 				return {
-		// 					name: providerName,
-		// 					id: value
-		// 				}
-		// 			});
-
-		// 		},
-		// 		fail: (error) => {
-		// 			console.log('获取登录通道失败', error);
-		// 		}
-		// 	});
-
-		// 	if (this.hasLogin && this.isUniverifyLogin) {
-		// 		this.getPhoneNumber(uni.getStorageSync(univerifyInfoKey)).then((phoneNumber) => {
-		// 			this.phoneNumber = phoneNumber
-		// 		})
-		// 	}
+			// if (this.hasLogin && this.isUniverifyLogin) {
+			// 	this.getPhoneNumber(uni.getStorageSync(univerifyInfoKey)).then((phoneNumber) => {
+			// 		this.phoneNumber = phoneNumber
+			// 	})
+			// }
 		},
 		methods: {
-			...mapActions(['getPhoneNumber']),
 			onClearIcon() {
 				this.mobile = '';
 			},
@@ -239,75 +181,40 @@
 				// 	})
 				// 	return;
 				// }
-				wx.login({
+				uni.login({
+					provider: "weixin",
+					onlyAuthorize: true,
 					success: (res)=>{
-						console.log('=====res', res);
+						console.log('=====res', JSON.stringify(res));
 						uni.navigateTo({
 							url: '/pages/personal/personalData'
 						});
-					}
-				})
-				// // 请求接口，并判断是新用户还是老用户
-				// uni.request({
-				// 	url: '',
-				// 	method: 'POST',
-				// 	data: { mobile: that.mobile, code: that.code },
-				// 	success: (res) => {
-				// 		uni.setStorageSync('user-token', res?.data?.token);
-				// 		if (res?.data?.userInfo?.isNew) {
-				// 			uni.navigateTo({
-				// 				url: '/pages/personal/personalData'
-				// 			});
-				// 		} else {
-				// 			uni.switchTab({
-				// 				url: '/pages/firstPage/index'
-				// 			});
-				// 		}
-				// 	},
-				// 	fail: (err) => {
-				// 		wx.showToast({
-				// 			title: err,
-				// 			icon: 'none'
-				// 		})
-				// 	}
-				// })
-			},
-			onAuthLogin() {
-				if (!this.checked) {
-					wx.showToast({
-						title: '请同意用户隐私协议',
-						icon: 'none'
-					})
-					return;
-				}
-				wx.getUserProfile({
-					desc: '获取你的昵称、头像、地区及性别',
-					success: async(res) => {
-						console.log('=====res', res);
-						// wxAuthInfo.encrypteddata = res?.encrypteddata;
-						// wxAuthInfo.iv = res?.iv;
-						// const wxRes = await wxLogin(wxAuthInfo);
-						// if (wxRes.data?.code == 200) {
-						// 	const sessionInfo = wxRes?.data?.sessionInfo;
-						// 	const { sessionKey, openId, nickName, avatarUrl } = sessionInfo || {};
-						// 	wxAuthInfo.sessionKey = sessionKey;
-						// 	const socketUser = { openId, nickName, avatarUrl };
-						// 	uni.setStorageSync('socketUser', JSON.stringify(socketUser));
-						// }
-					},
-					fail: (err)=>{
-						wx.showToast({
-							title: err,
-							icon: 'none'
+						// 获取到code后，提交给服务端请求登录接口，并判断是新用户还是老用户
+						uni.request({
+							url: '/login',
+							method: 'POST',
+							data: { code: res?.code },
+							success: async (res) => {
+								await uni.setStorageSync('user-token', res?.data?.token);
+								if (res?.data?.userInfo?.isNew) {
+									uni.navigateTo({
+										url: '/pages/personal/personalData'
+									});
+								} else {
+									uni.switchTab({
+										url: '/pages/firstPage/index'
+									});
+								}
+							},
+							fail: (err) => {
+								wx.showToast({
+									title: err,
+									icon: 'none'
+								})
+							}
 						})
 					}
 				})
-			},
-			getPhoneNumber: function(e){
-				console.log('========')
-				if (e.detail.rrMsg == 'getPhoneNumber:ok') {
-					let code = e.detail.code;
-				}
 			}
 			//
 		}
@@ -316,7 +223,7 @@
 
 <style lang="scss">
 .login_container {
-	height: 100%;
+	// height: 100%;
 	text-align: center;
 	background: #FFFFFF; 
 	padding: 40rpx;

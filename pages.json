@@ -20,17 +20,17 @@
 			}
 		},
 		{
-			"path": "pages/login/component/logo",
-			"style": {
-				"navigationBarTextStyle": "black"
-			}
-		},
-		{
 			"path" : "pages/firstPage/index",
 			"style" : 
 			{
 				"navigationBarTitleText" : "",
 				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path": "pages/login/component/logo", 
+			"style": {
+				"navigationBarTextStyle": "black"
 			}
 		},
 		{

@@ -1,0 +1,1 @@
+<view class="result_container data-v-86f87183"><view class="result_top data-v-86f87183"><view class="result_title data-v-86f87183">{{a}}</view><view class="result_id data-v-86f87183">{{b}}</view></view><scroll-view class="result_body data-v-86f87183"><view class="result_cont data-v-86f87183">{{c}}</view><view class="result_desc data-v-86f87183">{{d}}</view></scroll-view></view>

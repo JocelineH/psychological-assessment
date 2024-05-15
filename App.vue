@@ -21,26 +21,44 @@
 			console.log('App Launch');
 			// #ifdef APP-PLUS
 			// App平台检测升级，服务端代码是通过uniCloud的云函数实现的，详情可参考：https://ext.dcloud.net.cn/plugin?id=4542
-			if (plus.runtime.appid !== 'HBuilder') { // 真机运行不需要检查更新，真机运行时appid固定为'HBuilder'，这是调试基座的appid
-				checkUpdate()
-			}
-
-			// 一键登录预登陆，可以显著提高登录速度
-			uni.preLogin({
-				provider: 'univerify',
-				success: (res) => {
-					// 成功
-					this.setUniverifyErrorMsg();
-					console.log("preLogin success: ", res);
-				},
-				fail: (res) => {
-					this.setUniverifyLogin(false);
-					this.setUniverifyErrorMsg(res.errMsg);
-					// 失败
-					console.log("preLogin fail res: ", res);
+			// if (plus.runtime.appid !== 'HBuilder') { // 真机运行不需要检查更新，真机运行时appid固定为'HBuilder'，这是调试基座的appid
+			// 	checkUpdate()
+			// }
+			// // 一键登录预登陆，可以显著提高登录速度
+			// uni.preLogin({
+			// 	provider: 'univerify',
+			// 	success: (res) => {
+			// 		// 成功
+			// 		this.setUniverifyErrorMsg();
+			// 		console.log("preLogin success: ", res);
+			// 	},
+			// 	fail: (res) => {
+			// 		this.setUniverifyLogin(false);
+			// 		this.setUniverifyErrorMsg(res.errMsg);
+			// 		// 失败
+			// 		console.log("preLogin fail res: ", res);
+			// 	}
+			// })
+			// // #endif
+			console.log('===plus.runtime.appid', plus?.runtime?.appid);
+			if (plus?.runtime?.appid === 'HBuilder') { // 真机运行不需要检查更新，真机运行时appid固定为'HBuilder'，这是调试基座的appid
+				let SUID = uni.getStorageSync('user-token')
+				console.log('======SUID', SUID)
+				if (SUID) {
+					console.log('======gogofirstPage')
+					setTimeout(()=>{
+						plus?.navigator?.closeSplashscreen()
+					}, 1000)
+				} else {
+					console.log('======gogologin')
+					uni.reLaunch({
+						url: '/pages/login/index',
+						success: ()=>{
+							plus?.navigator?.closeSplashscreen()
+						}
+					})
 				}
-			})
-			// #endif
+			}
 		},
 		onShow: function() {
 			console.log('App Show')

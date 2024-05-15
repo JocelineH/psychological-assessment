@@ -3,10 +3,10 @@
 		<view class="personalPage_top">
 			<view class="personalPage_top_info">
 				<view class="personalPage_top_left">
-					<image v-if="!!personalInfo?.icon" class="personalPage_top_left_img" :src="personalInfo.icon"/>
+					<image v-if="!!personalInfo?.avatarUrl" class="personalPage_top_left_img" :src="personalInfo.avatarUrl"/>
 					<image v-else class="personalPage_top_left_img" :src="defaultImg" />
 				</view>
-				<view class="personalPage_top_center">{{personalInfo?.name}}</view>
+				<view class="personalPage_top_center">{{personalInfo?.nickName}}</view>
 				<view class="personalPage_top_right" @click="gotoEdit">
 					<image class="personalPage_top_edit_img" src="/static/image/edit.png"/>
 				</view>
@@ -58,15 +58,14 @@
 			this.getPersonalInfo();
 		},
 		methods: {
-			getPersonalInfo() {
-				this.personalInfo = {
-					icon: '',
-					name: 'kessiy',
-					total: 20,
-				};
+			async getPersonalInfo() {
+				const info = await uni.getStorageSync('user-info');
+				const personInfo = JSON.parse(info || "");
+				this.personalInfo = { ...personInfo };
 				this.getMyAssessList();
 			},
 			getMyAssessList() {
+				this.personalInfo.total = 20;
 				this.myAssessList = [
 					{ id: 1, icon: '/static/c1.png', name: 'IQ智商测试', desc: '用于测试一个人的智商', time: 1704081600000, url: '' },
 					{ id: 2, icon: '/static/c2.png', name: 'EQ情商测试', desc: '用于测试一个人的智商', time: 1704081600000, hasPay: true, url: '' },

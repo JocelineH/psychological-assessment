@@ -48,7 +48,7 @@
 				// console.log('====borth', borth);
 				this.borth = borth;
 			},
-			submit() {
+			async submit() {
 				console.log('====submit', this.sex, this.borth);
 				if (!this.sex) {
 					wx.showToast({
@@ -64,6 +64,10 @@
 					})
 					return;
 				}
+				const info = await uni.getStorageSync('user-info');
+				const personInfo = JSON.parse(info || "");
+				const userInfo = Object.assign({ gender: this.sex, borth: this.borth }, personInfo);
+				await uni.setStorageSync('user-info', JSON.stringify(userInfo));
 				wx.switchTab({
 					url: '/pages/firstPage/index'
 				})

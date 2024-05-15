@@ -1,0 +1,1 @@
+<view class="logo"><image src="{{a}}" mode="widthFix" style="width:100%"></image></view>

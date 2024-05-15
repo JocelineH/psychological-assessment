@@ -12,9 +12,9 @@
         "compilerVersion" : 3,
         "nvueLaunchMode" : "fast",
         "splashscreen" : {
-            "alwaysShowBeforeRender" : true,
+            "alwaysShowBeforeRender" : false,
             "waiting" : true,
-            "autoclose" : true,
+            "autoclose" : false,
             "delay" : 0
         },
         "modules" : {
@@ -75,7 +75,8 @@
                     "weixin" : {
                         "appid" : "__UNI__EF83AF9",
                         "UniversalLinks" : ""
-                    }
+                    },
+                    "univerify" : {}
                 },
                 "payment" : {
                     "weixin" : {
@@ -85,7 +86,10 @@
                     }
                 }
             },
-            "orientation" : [ "portrait-primary" ]
+            "orientation" : [ "portrait-primary" ],
+            "splashscreen" : {
+                "useOriginalMsgbox" : false
+            }
         },
         "uniStatistics" : {
             "enable" : true
@@ -201,5 +205,7 @@
     "uniStatistics" : {
         "version" : "2",
         "enable" : true
-    }
+    },
+    "locale" : "zh-Hans",
+    "fallbackLocale" : "zh-Hans"
 }

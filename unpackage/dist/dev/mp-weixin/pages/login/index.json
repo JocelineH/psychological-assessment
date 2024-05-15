@@ -1,0 +1,8 @@
+{
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "logo-vue": "./component/logo",
+    "auth-login": "./authLogin",
+    "uni-icons": "../../uni_modules/uni-icons/components/uni-icons/uni-icons"
+  }
+}

@@ -1,0 +1,1 @@
+<view class="report_container"><result-comp wx:if="{{a}}" class="report_body" u-i="c200a91c-0" bind:__l="__l" u-p="{{a}}"/><view wx:if="{{b}}" class="report_bottom"><button class="report_bottom_btn" bindtap="{{d}}">{{c}}</button></view></view>

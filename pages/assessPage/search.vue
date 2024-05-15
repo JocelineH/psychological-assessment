@@ -25,7 +25,7 @@
 		components: { assessList },
 		data() {
 			return {
-				COLOR: '#3D7EFF',
+				COLOR: '#1AB84E',
 				keyWord: '',
 				assesses: [],
 			}

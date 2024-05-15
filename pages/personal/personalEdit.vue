@@ -17,7 +17,6 @@
 	export default {
 		data() {
 			return {
-				personalInfo: {},
 				defaultImg: '/static/default-img.png',
 				infoOptions: [],
 			}
@@ -26,18 +25,15 @@
 			this.getPersonalInfo();
 		},
 		methods: {
-			getPersonalInfo() {
-				this.personalInfo = {
-					icon: '',
-					name: 'kessiy',
-					sex: 1, // 1是男，2是女
-					borth: '2001-01-24',
-				};
+			async getPersonalInfo() {
+				const info = await uni.getStorageSync('user-info');
+				const personInfo = JSON.parse(info || "");
+				const { avatarUrl, nickName, gender, borth } = personInfo || {};
 				this.infoOptions = [
-					{ label: '头像', icon: this.defaultImg, content: '' },
-					{ label: '昵称', icon: '', content: this.personalInfo?.name },
-					{ label: '性别', icon: '', content: this.personalInfo?.sex === 1 ? '男' : '女' },
-					{ label: '生日', icon: '', content: this.personalInfo?.borth },
+					{ label: '头像', icon: avatarUrl || this.defaultImg, content: '' },
+					{ label: '昵称', icon: '', content: nickName },
+					{ label: '性别', icon: '', content: gender ? gender === 1 ? '男' : '女' : '-' },
+					{ label: '生日', icon: '', content: borth || '-' },
 				];
 			}
 		}
